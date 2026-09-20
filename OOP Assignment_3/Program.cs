@@ -388,6 +388,36 @@
                 Console.WriteLine(new string('-', 30));
             }
         }
+        public sealed class CompletedShipment : Shipment
+        {
+            public DateTime CompletionDate { get; set; }
+
+            public CompletedShipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination, DateTime completionDate)
+                : base(trackingCode, description, weight, deliveryFee, destination)
+            {
+                CompletionDate = completionDate;
+            }
+
+            public class PriorityInternationalShipment : InternationalShipment
+            {
+                public PriorityInternationalShipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination, string destinationCountry, decimal customsFee)
+                    : base(trackingCode, description, weight, deliveryFee, destination, destinationCountry, customsFee)
+                {
+                }
+                public sealed override void PrintShipment()
+                {
+                    Console.WriteLine("[Priority International Shipment]");
+                    base.PrintShipment();
+                }
+            }
+            public override void PrintShipment()
+            {
+                Console.WriteLine("[Completed Shipment - Sealed]");
+                base.PrintShipment();
+                Console.WriteLine($"Completed On: {CompletionDate.ToShortDateString()}");
+                Console.WriteLine(new string('-', 30));
+            }
+        }
         #endregion
         static void Main(string[] args)
         {
