@@ -240,6 +240,7 @@
 
                 return true;
             }
+
             public void PrintAllShipments()
             {
                 Console.WriteLine($"--- Delivery Center: {centerName} ---");
@@ -254,8 +255,10 @@
                 {
                     for (int i = 0; i < count; i++)
                     {
-                        Console.WriteLine($"Shipment {i + 1}:");
-                        shipments[i].PrintShipment();
+                        if (shipments[i] != null)
+                        {
+                            shipments[i].PrintShipment(); 
+            }
                     }
                 }
             }
