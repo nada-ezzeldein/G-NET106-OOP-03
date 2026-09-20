@@ -388,39 +388,28 @@
                 Console.WriteLine(new string('-', 30));
             }
         }
+        #region CompletedShipment
         public sealed class CompletedShipment : Shipment
         {
-            public DateTime CompletionDate { get; set; }
-
-            public CompletedShipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination, DateTime completionDate)
+            public CompletedShipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination)
                 : base(trackingCode, description, weight, deliveryFee, destination)
             {
-                CompletionDate = completionDate;
             }
 
-            public class PriorityInternationalShipment : InternationalShipment
+            public CompletedShipment(string trackingCode)
+                : base(trackingCode)
             {
-                public PriorityInternationalShipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination, string destinationCountry, decimal customsFee)
-                    : base(trackingCode, description, weight, deliveryFee, destination, destinationCountry, customsFee)
-                {
-                }
-                public sealed override void PrintShipment()
-                {
-                    Console.WriteLine("[Priority International Shipment]");
-                    base.PrintShipment();
-                }
             }
             public override void PrintShipment()
             {
-                Console.WriteLine("[Completed Shipment - Sealed]");
+                Console.WriteLine("[Status: Completed Shipment]");
                 base.PrintShipment();
-                Console.WriteLine($"Completed On: {CompletionDate.ToShortDateString()}");
-                Console.WriteLine(new string('-', 30));
             }
         }
         #endregion
+        #endregion
 
-        #region  Create DeliveryHelper
+        #region Create DeliveryHelper
         public static class DeliveryHelper
         {
             public static void PrintShipmentDetails(Shipment shipment)
@@ -436,6 +425,8 @@
             }
         }
         #endregion
+
+
         static void Main(string[] args)
         {
             #region Question 1
