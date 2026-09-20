@@ -278,7 +278,6 @@
 
             public override void PrintShipment()
             {
-                Console.WriteLine("[Standard Shipment]");
                 base.PrintShipment();
             }
         }
@@ -316,7 +315,6 @@
 
             public override void PrintShipment()
             {
-                Console.WriteLine("[Express Shipment]");
                 Console.WriteLine($"Tracking Code: {TrackingCode}");
                 Console.WriteLine($"Description: {Description}");
                 Console.WriteLine($"Weight: {Weight}");
@@ -376,7 +374,6 @@
 
             public override void PrintShipment()
             {
-                Console.WriteLine("[International Shipment]");
                 Console.WriteLine($"Tracking Code: {TrackingCode}");
                 Console.WriteLine($"Description: {Description}");
                 Console.WriteLine($"Weight: {Weight}");
