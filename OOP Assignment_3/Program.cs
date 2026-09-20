@@ -13,6 +13,18 @@
             // Static occurs at compile time, where the method to be called is determined based on the reference type.
             // Dynamic occurs at runtime, where the method to be called is determined based on the actual object type.
             #endregion
+
+
+            #region Question 2
+            // a)  What is the purpose of the sealed keyword when applied to a class?
+            // sealed prevents a class from being inherited . 
+
+            // b)  What is the difference between a sealed class and a sealed method?
+            // sealed class cannot be inherited, while sealed method cannot be overridden in derived classes.
+
+            // c)  Can a sealed method be overridden? Why?
+            // No, because it is marked as final and cannot be further modified in derived classes.
+            #endregion
         }
     }
 }
