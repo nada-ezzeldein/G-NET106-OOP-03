@@ -419,6 +419,23 @@
             }
         }
         #endregion
+
+        #region  Create DeliveryHelper
+        public static class DeliveryHelper
+        {
+            public static void PrintShipmentDetails(Shipment shipment)
+            {
+                if (shipment != null)
+                {
+                    shipment.PrintShipment();
+                }
+                else
+                {
+                    Console.WriteLine("The shipment details cannot be displayed because the shipment is null.");
+                }
+            }
+        }
+        #endregion
         static void Main(string[] args)
         {
             #region Question 1
