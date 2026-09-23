@@ -152,6 +152,7 @@
                 count = 0;
             }
 
+            public Driver AssignedDriver { get; set; }
             public Shipment this[int index]
             {
                 get
@@ -375,6 +376,10 @@
                 }
             }
 
+            public virtual void GenerateCustomsReport()
+            {
+                Console.WriteLine($"Generating standard customs report : {DestinationCountry}");
+            }
             public override void PrintShipment()
             {
                 Console.WriteLine($"Tracking Code: {TrackingCode}");
@@ -409,6 +414,25 @@
         #endregion
         #endregion
 
+        #region PriorityInternationalShipment
+        public class PriorityInternationalShipment : InternationalShipment
+        {
+            public PriorityInternationalShipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination, string destinationCountry, decimal customsFee)
+                : base(trackingCode, description, weight, deliveryFee, destination, destinationCountry, customsFee)
+            {
+            }
+            public sealed override void GenerateCustomsReport()
+            {
+                Console.WriteLine($"[PRIORITY EXPEDITED] Generating express customs report for {DestinationCountry}");
+            }
+            public override void PrintShipment()
+            {
+                Console.WriteLine("[Priority International Shipment]");
+                base.PrintShipment();
+            }
+        }
+        #endregion 
+
         #region Create DeliveryHelper
         public static class DeliveryHelper
         {
@@ -426,7 +450,17 @@
         }
         #endregion
 
+        #region Driver
+        public class Driver
+        {
+            public string Name { get; set; }
 
+            public Driver(string name)
+            {
+                Name = name;
+            }
+        }
+        #endregion
         static void Main(string[] args)
         {
             #region Question 1
